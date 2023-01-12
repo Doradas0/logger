@@ -6,7 +6,7 @@ interface Log {
 export class Logger {
   private debugLogs: Log[] = [];
   info(message: string) {
-    console.log(
+    console.info(
       JSON.stringify({
         message,
         level: "info",
@@ -14,7 +14,7 @@ export class Logger {
     );
   }
   warn(message: string) {
-    console.log(
+    console.warn(
       JSON.stringify({
         message,
         level: "warn",
@@ -28,7 +28,7 @@ export class Logger {
     });
   }
   error(message: string) {
-    console.log(
+    console.error(
       JSON.stringify({
         message,
         level: "error",
@@ -39,7 +39,7 @@ export class Logger {
   }
   private getDebugLogs() {
     this.debugLogs.forEach((log) => {
-      console.log(JSON.stringify(log));
+      console.debug(JSON.stringify(log));
     });
   }
 }
