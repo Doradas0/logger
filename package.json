@@ -4,7 +4,9 @@
   "description": "a typesafe logging tool that minimizes debug logs unless error",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build",
+    "build": "tsc"
   },
   "author": "Doradas0",
   "license": "ISC",
