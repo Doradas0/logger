@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const logger_1 = require("./src/logger");
+const SERVICE_NAME = "sample-service";
+const logger = new logger_1.Logger(SERVICE_NAME);
+logger.debug("1");
+logger.debug("2");
+logger.info("3", { key1: "data" });
+logger.debug("4");
+const err = new Error("test error 1");
+logger.error("5", err, { key2: "data" });
