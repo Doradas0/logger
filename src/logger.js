@@ -1,21 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = void 0;
+const logger_1 = require("@aws-lambda-powertools/logger");
 class Logger {
     constructor() {
         this.debugLogs = [];
+        this.logger = new logger_1.Logger();
+    }
+    getDebugLogs() {
+        this.debugLogs.forEach((log) => {
+            this.log(log.message, log.level);
+        });
+    }
+    log(message, level) {
+        const log = {
+            message,
+            level,
+        };
+        this.logger[level](JSON.stringify(log));
     }
     info(message) {
-        console.info(JSON.stringify({
-            message,
-            level: "info",
-        }));
+        this.log(message, "info");
     }
     warn(message) {
-        console.warn(JSON.stringify({
-            message,
-            level: "warn",
-        }));
+        this.log(message, "warn");
     }
     debug(message) {
         this.debugLogs.push({
@@ -24,17 +32,9 @@ class Logger {
         });
     }
     error(message) {
-        console.error(JSON.stringify({
-            message,
-            level: "error",
-        }));
+        this.log(message, "error");
         this.getDebugLogs();
         this.debugLogs = [];
-    }
-    getDebugLogs() {
-        this.debugLogs.forEach((log) => {
-            console.debug(JSON.stringify(log));
-        });
     }
 }
 exports.Logger = Logger;

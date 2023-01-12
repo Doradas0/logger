@@ -1,9 +1,16 @@
+import { Logger as AWSLogger } from '@aws-lambda-powertools/logger';
+
 interface Log {
   message: string;
   level: "info" | "warn" | "error" | "debug";
 }
 
 export class Logger {
+  private logger;
+  constructor() {
+    this.logger = new AWSLogger();
+  }
+
   private debugLogs: Log[] = [];
 
   private getDebugLogs() {
@@ -17,21 +24,24 @@ export class Logger {
       message,
       level,
     };
-    console.log(JSON.stringify(log));
+    this.logger[level](JSON.stringify(log));
   }
 
   info(message: string) {
     this.log(message, "info");
   }
+
   warn(message: string) {
     this.log(message, "warn");
   }
+
   debug(message: string) {
     this.debugLogs.push({
       message,
       level: "debug",
     });
   }
+
   error(message: string) {
     this.log(message, "error");
     this.getDebugLogs();
