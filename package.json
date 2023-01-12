@@ -1,0 +1,20 @@
+{
+  "name": "logger",
+  "version": "0.0.1",
+  "description": "a typesafe logging tool that minimizes debug logs unless error",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Doradas0",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "prettier": "2.8.2"
+  }
+}
