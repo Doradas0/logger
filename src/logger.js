@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = void 0;
 const logger_1 = require("@aws-lambda-powertools/logger");
 class Logger {
-    constructor() {
+    constructor(serviceName, debug = false) {
         this.debugLogs = [];
-        this.logger = new logger_1.Logger();
+        this.logger = new logger_1.Logger({ serviceName, logLevel: debug ? "debug" : "info" });
     }
     getDebugLogs() {
         this.debugLogs.forEach((log) => {

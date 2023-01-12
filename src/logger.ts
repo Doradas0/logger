@@ -7,8 +7,8 @@ interface Log {
 
 export class Logger {
   private logger;
-  constructor() {
-    this.logger = new AWSLogger();
+  constructor(serviceName: string, debug: boolean = false) {
+    this.logger = new AWSLogger({serviceName, logLevel: debug ? "debug" : "info"});
   }
 
   private debugLogs: Log[] = [];
