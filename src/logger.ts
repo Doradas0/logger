@@ -5,21 +5,26 @@ interface Log {
 
 export class Logger {
   private debugLogs: Log[] = [];
+
+  private getDebugLogs() {
+    this.debugLogs.forEach((log) => {
+      this.log(log.message, log.level);
+    });
+  }
+
+  private log(message: string, level: "info" | "warn" | "error" | "debug") {
+    const log: Log = {
+      message,
+      level,
+    };
+    console.log(JSON.stringify(log));
+  }
+
   info(message: string) {
-    console.info(
-      JSON.stringify({
-        message,
-        level: "info",
-      })
-    );
+    this.log(message, "info");
   }
   warn(message: string) {
-    console.warn(
-      JSON.stringify({
-        message,
-        level: "warn",
-      })
-    );
+    this.log(message, "warn");
   }
   debug(message: string) {
     this.debugLogs.push({
@@ -28,18 +33,8 @@ export class Logger {
     });
   }
   error(message: string) {
-    console.error(
-      JSON.stringify({
-        message,
-        level: "error",
-      })
-    );
+    this.log(message, "error");
     this.getDebugLogs();
     this.debugLogs = [];
-  }
-  private getDebugLogs() {
-    this.debugLogs.forEach((log) => {
-      console.debug(JSON.stringify(log));
-    });
   }
 }

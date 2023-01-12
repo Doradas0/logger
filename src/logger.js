@@ -6,9 +6,15 @@ class Logger {
         this.debugLogs = [];
     }
     info(message) {
-        console.log(JSON.stringify({
+        console.info(JSON.stringify({
             message,
             level: "info",
+        }));
+    }
+    warn(message) {
+        console.warn(JSON.stringify({
+            message,
+            level: "warn",
         }));
     }
     debug(message) {
@@ -18,7 +24,7 @@ class Logger {
         });
     }
     error(message) {
-        console.log(JSON.stringify({
+        console.error(JSON.stringify({
             message,
             level: "error",
         }));
@@ -27,7 +33,7 @@ class Logger {
     }
     getDebugLogs() {
         this.debugLogs.forEach((log) => {
-            console.log(JSON.stringify(log));
+            console.debug(JSON.stringify(log));
         });
     }
 }
