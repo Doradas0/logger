@@ -1,30 +1,22 @@
 import { Logger as AWSLogger } from '@aws-lambda-powertools/logger';
 
-interface Log {
-  message: string;
-  level: "info" | "warn" | "error" | "debug";
-}
-
 export class Logger {
   private logger;
+
   constructor(serviceName: string, debug: boolean = false) {
     this.logger = new AWSLogger({serviceName, logLevel: debug ? "debug" : "info"});
   }
 
-  private debugLogs: Log[] = [];
+  private debugLogs: string[] = [];
 
-  private getDebugLogs() {
+  private printDebugLogs() {
     this.debugLogs.forEach((log) => {
-      this.log(log.message, log.level);
+      this.log(log, "debug");
     });
   }
 
-  private log(message: string, level: "info" | "warn" | "error" | "debug") {
-    const log: Log = {
-      message,
-      level,
-    };
-    this.logger[level](JSON.stringify(log));
+  private log(message: string, level: "info" | "warn" | "error" | "debug", error?: Error) {
+    this.logger[level](message, error as Error);
   }
 
   info(message: string) {
@@ -36,15 +28,12 @@ export class Logger {
   }
 
   debug(message: string) {
-    this.debugLogs.push({
-      message,
-      level: "debug",
-    });
+    this.debugLogs.push(message);
   }
 
-  error(message: string) {
-    this.log(message, "error");
-    this.getDebugLogs();
+  error(message: string, error: Error) {
+    this.log(message, "error", error);
+    this.printDebugLogs();
     this.debugLogs = [];
   }
 }

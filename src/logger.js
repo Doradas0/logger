@@ -7,17 +7,13 @@ class Logger {
         this.debugLogs = [];
         this.logger = new logger_1.Logger({ serviceName, logLevel: debug ? "debug" : "info" });
     }
-    getDebugLogs() {
+    printDebugLogs() {
         this.debugLogs.forEach((log) => {
-            this.log(log.message, log.level);
+            this.log(log, "debug");
         });
     }
-    log(message, level) {
-        const log = {
-            message,
-            level,
-        };
-        this.logger[level](JSON.stringify(log));
+    log(message, level, error) {
+        this.logger[level](message, error);
     }
     info(message) {
         this.log(message, "info");
@@ -26,14 +22,11 @@ class Logger {
         this.log(message, "warn");
     }
     debug(message) {
-        this.debugLogs.push({
-            message,
-            level: "debug",
-        });
+        this.debugLogs.push(message);
     }
-    error(message) {
-        this.log(message, "error");
-        this.getDebugLogs();
+    error(message, error) {
+        this.log(message, "error", error);
+        this.printDebugLogs();
         this.debugLogs = [];
     }
 }
