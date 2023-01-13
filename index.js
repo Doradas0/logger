@@ -1,11 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const logger_1 = require("./src/logger");
-const SERVICE_NAME = "sample-service";
-const logger = new logger_1.Logger(SERVICE_NAME);
-logger.debug("1");
-logger.debug("2");
-logger.info("3", { key1: "data" });
-logger.debug("4");
-const err = new Error("test error 1");
-logger.error("5", err, { key2: "data" });
+exports.Logger = void 0;
+const logger_1 = require("@aws-lambda-powertools/logger");
+class Logger {
+    constructor(serviceName) {
+        this.debugLogs = [];
+        this.logger = new logger_1.Logger({
+            serviceName,
+            logLevel: "debug",
+        });
+    }
+    printDebugLogs() {
+        this.debugLogs.forEach((log) => {
+            const { message, level } = log;
+            this.log({ message, level });
+        });
+    }
+    log(log) {
+        this.logger[log.level](log.message, Object.assign({}, log.data), log.error);
+    }
+    info(message, data) {
+        this.log({ message, level: "info", data });
+    }
+    warn(message, data) {
+        this.log({ message, level: "warn", data });
+    }
+    debug(message, data) {
+        this.debugLogs.push({ message, level: "debug", data });
+    }
+    error(message, error, data) {
+        this.log({ message, level: "error", error, data });
+        this.printDebugLogs();
+        this.debugLogs = [];
+    }
+}
+exports.Logger = Logger;
