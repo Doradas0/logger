@@ -1,28 +1,16 @@
 {
-  "name": "balsa",
+  "name": "doradas0-logger",
   "version": "0.1.0",
   "description": "a typesafe logging tool that minimizes debug logs until an error",
   "author": "Doradas0",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      },
-      "require": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      } 
-    }
-  },
   "files": ["dist/**/*"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && tsc -p ./tsconfig.json && mv ./dist/index.js ./dist/index.mjs",
+    "build": "npm run clean && tsc -p ./tsconfig.json",
     "prepack": "npm run build"
   },
   "dependencies": {
