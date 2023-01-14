@@ -2,11 +2,11 @@
   "name": "logger",
   "version": "0.0.1",
   "description": "a typesafe logging tool that minimizes debug logs unless error",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run build",
-    "build": "tsc"
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && tsc -p ./tsconfig.json",
+    "prepack": "npm run build"
   },
   "author": "Doradas0",
   "license": "ISC",
@@ -19,5 +19,15 @@
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
     "prettier": "2.8.2"
+  },
+  "files": ["dist/**/*"],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

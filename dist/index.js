@@ -3,13 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = void 0;
 const logger_1 = require("@aws-lambda-powertools/logger");
 class Logger {
+    logger;
     constructor(serviceName) {
-        this.debugLogs = [];
         this.logger = new logger_1.Logger({
             serviceName,
             logLevel: "debug",
         });
     }
+    debugLogs = [];
     printDebugLogs() {
         this.debugLogs.forEach((log) => {
             const { message, level } = log;
@@ -17,7 +18,7 @@ class Logger {
         });
     }
     log(log) {
-        this.logger[log.level](log.message, Object.assign({}, log.data), log.error);
+        this.logger[log.level](log.message, { ...log.data }, log.error);
     }
     info(message, data) {
         this.log({ message, level: "info", data });

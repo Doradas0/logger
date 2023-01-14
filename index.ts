@@ -8,7 +8,7 @@ interface log {
 }
 
 export class Logger {
-  private logger;
+  private logger: AWSLogger;
 
   constructor(serviceName: string) {
     this.logger = new AWSLogger({
