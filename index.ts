@@ -3,7 +3,7 @@ import { Logger as AWSLogger } from "@aws-lambda-powertools/logger";
 interface log {
   message: string;
   level: "info" | "warn" | "error" | "debug";
-  error?: Error;
+  error?: any;
   data?: any;
 }
 
@@ -42,7 +42,7 @@ export class Logger {
     this.debugLogs.push({ message, level: "debug", data });
   }
 
-  error(message: string, error: Error, data?: any) {
+  error(message: string, error: any, data?: any) {
     this.log({ message, level: "error", error, data });
     this.printDebugLogs();
     this.debugLogs = [];
