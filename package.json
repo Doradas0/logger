@@ -1,11 +1,9 @@
 {
   "name": "doradas0-logger",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "a typesafe logging tool that minimizes debug logs until an error",
   "author": "Doradas0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
