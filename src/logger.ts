@@ -21,13 +21,13 @@ export class Logger {
 
   private printDebugLogs() {
     this.debugLogs.forEach((log) => {
-      const { message, level } = log;
-      this.log({ message, level });
+      const { message, level, data } = log;
+      this.log({ message, level, data });
     });
   }
 
   private log(log: log) {
-    this.logger[log.level](log.message, { ...log.data }, log.error as Error);
+    this.logger[log.level](log.message, log.data, log.error as Error);
   }
 
   info(message: string, data?: any) {
@@ -47,8 +47,5 @@ export class Logger {
     this.log({ message, level: "error", error, data });
     this.printDebugLogs();
     this.debugLogs = [];
-  }
-  test(message: string, data?: any) {
-    this.log({ message, level: "info", data });
   }
 }
