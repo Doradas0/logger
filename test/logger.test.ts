@@ -1,12 +1,10 @@
-import { Logger } from '../';
+import { Logger } from "../";
 
-describe('Logger', () => {
-  const logger = new Logger('test-service');
-  it('1+1=2', () => {
-    expect(1 + 1).toBe(2);
-  });
-  // it('should log info', () => {
-  //   logger.info('info message');
+describe("Logger", () => {
+  const logger = new Logger("test-service");
+  logger.test("test message");
+  // it("should log info", () => {
+  //   logger.info("info message");
   // });
   // it('should log warn', () => {
   //   logger.warn('warn message');

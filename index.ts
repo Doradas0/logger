@@ -48,4 +48,7 @@ export class Logger {
     this.printDebugLogs();
     this.debugLogs = [];
   }
+  test(message: string, data?: any) {
+    this.log({ message, level: "info", data });
+  }
 }
