@@ -39,7 +39,8 @@ export class Logger {
   }
 
   debug(message: string, data?: any) {
-    this.debugLogs.push({ message, level: "debug", data });
+    const dataToLog = { ...data, timestamp: new Date().toISOString() };
+    this.debugLogs.push({ message, level: "debug", data: dataToLog });
   }
 
   error(message: string, error: any, data?: any) {
