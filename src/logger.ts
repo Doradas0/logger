@@ -80,7 +80,7 @@ export class Logger {
    * @beta
    *
    */
-  error(message: string, error: any, data?: any) {
+  error(message: string, error?: any, data?: any) {
     this.log({ message, level: "error", error, data });
     this.printDebugLogs();
     this.debugLogs = [];

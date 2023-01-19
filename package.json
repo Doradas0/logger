@@ -1,6 +1,6 @@
 {
   "name": "@doradas0/logger",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "a typesafe logging tool that minimizes debug logs until an error",
   "author": "Doradas0",
   "license": "ISC",
