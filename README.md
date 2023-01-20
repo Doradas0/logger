@@ -18,13 +18,13 @@ import { Logger } from '@doradas0/logger
 const logger = new Logger("Sample Service")
 
 export const handler = async (event) => {
-  // Debug log won't print
+  // Stores log until error an occurs
   logger.debug("Event: " , event)
 
   try {
     asyncFunction()
   catch ( error ) {
-    // logger.error prints error then prints all debug logs
+    // Prints error, then prints all debug logs
     logger.error("Async Function Failed", error)
   }
 }
