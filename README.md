@@ -6,7 +6,9 @@ Built using @aws-lambda-powertools/logger
 
 ### Install
 
-> `npm i @doradas0/logger`
+```bash 
+npm i @doradas0/logger
+```
 
 ### Basic Example
 
