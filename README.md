@@ -12,7 +12,8 @@ Built using @aws-lambda-powertools/logger
 
 > ```ts
 > import { Logger } from '@doradas0/logger
-> const logger = new Logger()
+>
+> const logger = new Logger("Sample Service")
 >
 > export const handler = async (event) => {
 >   // Debug log won't print
