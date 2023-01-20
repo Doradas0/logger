@@ -23,7 +23,7 @@ export const handler = async (event) => {
 
   try {
     asyncFunction()
-  catch ( error ) {
+  } catch ( error ) {
     // Prints error, then prints all debug logs
     logger.error("Async Function Failed", error)
   }
