@@ -13,7 +13,7 @@ npm i @doradas0/logger
 ### Basic Example
 
 ```JavaScript
-import { Logger } from '@doradas0/logger
+import { Logger } from "@doradas0/logger"
 
 const logger = new Logger("Sample Service")
 
