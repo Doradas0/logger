@@ -12,7 +12,7 @@ npm i @doradas0/logger
 
 ### Basic Example
 
-```TypeScript
+```JavaScript
 import { Logger } from '@doradas0/logger
 
 const logger = new Logger("Sample Service")
@@ -32,7 +32,7 @@ export const handler = async (event) => {
 
 ### Available methods
 
-```TypeScript
+```JavaScript
 logger.info("Info Message", optionalData)
 logger.warn("Warning Message", optionalData)
 logger.debug("Debug Message: " , optionalData)
