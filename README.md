@@ -10,7 +10,7 @@ Built using @aws-lambda-powertools/logger
 
 ### Basic Example
 
-> ```typescript
+> ```TypeScript
 > import { Logger } from '@doradas0/logger
 >
 > const logger = new Logger("Sample Service")
@@ -30,7 +30,7 @@ Built using @aws-lambda-powertools/logger
 
 ### Available methods
 
-> ```typescript
+> ```TypeScript
 > logger.info("Info Message", optionalData)
 > logger.warn("Warning Message", optionalData)
 > logger.debug("Debug Message: " , optionalData)
